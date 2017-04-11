@@ -1,3 +1,47 @@
-<h1>
-  {{title}}
-</h1>
+<section class="task-manager">
+  
+
+  <section class="task-form">
+    <h1>Tasks</h1>
+    <form #newtaskForm="ngForm" (ngSubmit)="addTask()">
+      <div class="title">
+        <label>Title</label>
+        <input required  [ngModelOptions]="{standalone: true}" placeholder="What needs to be done?" autofocus="" [(ngModel)]="newTask.title">
+      </div>
+
+      <div class="type">
+        <label>Type</label>
+        <select required [ngModelOptions]="{standalone: true}" [(ngModel)]="newTask.type">
+          <option *ngFor="let type of taskTypes" [value]="type">{{type}}</option>
+        </select>
+      </div>
+
+      <div class="description" >
+       <label>Description</label>
+       <textarea required [ngModelOptions]="{standalone: true}" placeholder="More details aboout the task" autofocus="" [(ngModel)]="newTask.description"></textarea>
+      </div>
+      <div class="comments">
+       <label>Comments</label>
+        <textarea  [ngModelOptions]="{standalone: true}" placeholder="comments" autofocus="" [(ngModel)]="newTask.comment"></textarea>
+      </div>
+      <div>
+        <button class="add" >Add Task</button>
+      </div>
+    </form>
+
+  </section>
+
+
+<section class="task-dashboard">
+      <div class="task-list" *ngFor="let type of typeKeys">
+        <h1>{{type}}</h1>
+        <div class="task card {{type}}" *ngFor="let task of tasksByType[type]" >
+          <b>{{task.title}} - {{task.type}}</b>
+          <div>{{task.description}}</div>
+          <div>{{task.comment}}</div>
+          <button class="destroy" (click)="deleteTask(task)">Delete</button>
+        </div>
+      </div>
+</section>
+
+</section>

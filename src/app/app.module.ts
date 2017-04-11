@@ -5,6 +5,10 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
+import { TaskDataService } from './task-data.service';
+
+import {DndModule} from 'ng2-dnd';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -12,9 +16,10 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    DndModule.forRoot()
   ],
-  providers: [],
+  providers: [TaskDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
