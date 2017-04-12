@@ -5,49 +5,37 @@
   padding: 15px;
 }
 
+
+.task-manager{
+  margin: 15px;
+  .task-form{
+    width: 300px;
+    label{
+      display: block;
+    }
+  }
+
+
+}
+
+
 .task-dashboard{
   display: flex;
 
   .task-list{
     display: flex;
     flex-direction: column;
-
+    border-right: 1px solid #c8c8c8;
+    flex-grow:1;
     .task{
-      width: 100px;
-      height: 100px;
+      max-width: 200px;
+      height: auto;
       display: inline-block;
       margin: 15px;
+      .delete{
+        margin-top: 10px;
+      }
     }
-  }
-}
-
-.task-form{
- 
-  width: 300px;
-
- 
-
-  label{
-    display: block;
-    padding-top: 10px;
-    font-size: 0.9em;
-    font-weight: bold;
-  }
-
-  button{
-    background: #c8c8c8;
-    margin-top: 20px;
-  }
-
-  .title{
-
-  }
-  .description{
-
-  }
-
-  .comments{
-
   }
 }
 

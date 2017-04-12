@@ -12,7 +12,7 @@ export class AppComponent {
  
   newTask: Task = new Task();
 
-  taskTypes: string[] = ["Work","Personal","Others"]
+  taskTypes: string[] = ["Office","Personal","Early Morning","Evening","Night","Others"]
 
   constructor(private taskDataService: TaskDataService){};
 

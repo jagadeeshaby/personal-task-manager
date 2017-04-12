@@ -1,47 +1,63 @@
-<section class="task-manager">
-  
 
-  <section class="task-form">
-    <h1>Tasks</h1>
-    <form #newtaskForm="ngForm" (ngSubmit)="addTask()">
-      <div class="title">
-        <label>Title</label>
-        <input required  [ngModelOptions]="{standalone: true}" placeholder="What needs to be done?" autofocus="" [(ngModel)]="newTask.title">
-      </div>
+<div class="task-manager">
 
-      <div class="type">
-        <label>Type</label>
-        <select required [ngModelOptions]="{standalone: true}" [(ngModel)]="newTask.type">
-          <option *ngFor="let type of taskTypes" [value]="type">{{type}}</option>
-        </select>
-      </div>
+  <h2> Personal Task Manager </h2>
+  <p>
+    Application which keep track of task that you want(Task dashboard) to do and allows you to add new Task.
+  </p>
 
-      <div class="description" >
-       <label>Description</label>
-       <textarea required [ngModelOptions]="{standalone: true}" placeholder="More details aboout the task" autofocus="" [(ngModel)]="newTask.description"></textarea>
-      </div>
-      <div class="comments">
-       <label>Comments</label>
-        <textarea  [ngModelOptions]="{standalone: true}" placeholder="comments" autofocus="" [(ngModel)]="newTask.comment"></textarea>
-      </div>
-      <div>
-        <button class="add" >Add Task</button>
-      </div>
-    </form>
+  <div class="panel panel-primary ">
+    <div class="panel-heading">Task DashBoard</div>
+    <div class="task-dashboard">
 
-  </section>
-
-
-<section class="task-dashboard">
-      <div class="task-list" *ngFor="let type of typeKeys">
-        <h1>{{type}}</h1>
+      <div class="task-list panel-body" *ngFor="let type of typeKeys">
+        <h3>{{type}}</h3>
         <div class="task card {{type}}" *ngFor="let task of tasksByType[type]" >
-          <b>{{task.title}} - {{task.type}}</b>
+          <b>{{task.title}}</b>
           <div>{{task.description}}</div>
           <div>{{task.comment}}</div>
-          <button class="destroy" (click)="deleteTask(task)">Delete</button>
+          <button class="delete btn btn-danger btn-xs" (click)="deleteTask(task)">Delete</button>
         </div>
       </div>
-</section>
 
-</section>
+      <div class="panel-body" *ngIf="typeKeys.length == 0">
+        <p> Task list is empty!.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="panel panel-primary task-form">
+    <div class="panel-heading">Add Task</div>
+    <div class="panel-body">
+      <form #newtaskForm="ngForm" (ngSubmit)="addTask()">
+        <div class="title form-group">
+          <label>Title</label>
+          <input class="form-control" required  [ngModelOptions]="{standalone: true}" placeholder="What needs to be done?" autofocus="" [(ngModel)]="newTask.title">
+        </div>
+
+        <div class="type form-group">
+          <label>Type</label>
+          <select class="form-control" required [ngModelOptions]="{standalone: true}" [(ngModel)]="newTask.type">
+            <option selected *ngFor="let type of taskTypes" [value]="type">{{type}}</option>
+          </select>
+        </div>
+
+        <div class="description form-group" >
+         <label>Description</label>
+         <textarea class="form-control" required [ngModelOptions]="{standalone: true}" placeholder="More details aboout the task" autofocus="" [(ngModel)]="newTask.description"></textarea>
+        </div>
+        <div class="comments form-group">
+         <label>Comments</label>
+          <textarea  [ngModelOptions]="{standalone: true}" placeholder="comments" autofocus="" [(ngModel)]="newTask.comment"></textarea>
+        </div>
+        <div>
+          <button class="btn btn-primary" >Add Task</button>
+        </div>
+      </form>
+
+
+    </div>
+  </div>
+
+</div>
